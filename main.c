@@ -2,4 +2,8 @@
 //come dif, patch ect...
 //github è un insieme di server che consentono di poter condividere in rete il nostro codice
 
+<<<<<<< HEAD
 //modifica caporetto1
+=======
+//caporetto2
+>>>>>>> feature2
