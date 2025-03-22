@@ -1,19 +1,26 @@
-# Makefile per compilare un file C in un eseguibile nomefile.out
-
+# Compilatore e flag
 CC = gcc
 CFLAGS = -Wall -Wconversion -g -lm
 
-# Regola generica: se si esegue "make nomefile" allora:
-# - elimina nomefile.out (se esistente)
-# - compila nomefile.c in nomefile.out
-# - esegue nomefile.out
-%:
-	@rm -f $@.out
-	$(CC) $(CFLAGS) $@.c -o $@.out
-	./$@.out
+# Nome dell'eseguibile
+TARGET = main
 
-# Target per pulire tutti gli eseguibili .out
+# Trova tutti i file .c nella directory corrente
+SRCS = $(wildcard *.c)
+
+# Crea una lista dei file oggetto corrispondenti
+OBJS = $(SRCS:.c=.o)
+
+# Regola principale
+$(TARGET): $(OBJS)
+	$(CC) $(CFLAGS) -o $@ $^
+
+# Regola per compilare i file .c in .o
+%.o: %.c
+	$(CC) $(CFLAGS) -c $< -o $@
+
+# Pulizia dei file oggetto e dell'eseguibile
 clean:
-	@rm -f *.out
+	rm -f $(OBJS) $(TARGET)
 
 .PHONY: clean
