@@ -1,26 +1,25 @@
-# Compilatore e flag
+# Compilatore da utilizzare
 CC = gcc
+
+# Opzioni di compilazione:
+# -Wall: abilita tutti gli avvisi
+# -Wconversion: avvisa sulle conversioni implicite potenzialmente pericolose
+# -g: include informazioni di debug
+# -lm: collega la libreria matematica (non necessaria in questo progetto, ma utile per esempi futuri)
 CFLAGS = -Wall -Wconversion -g -lm
 
-# Nome dell'eseguibile
-TARGET = main
+# Nome dell'eseguibile finale
+TARGET = main.out
 
-# Trova tutti i file .c nella directory corrente
-SRCS = $(wildcard *.c)
+# Trova automaticamente TUTTI i file .c nella cartella corrente
+SOURCES = $(wildcard *.c)
 
-# Crea una lista dei file oggetto corrispondenti
-OBJS = $(SRCS:.c=.o)
+# Regola principale: costruisce l'eseguibile finale
+$(TARGET): $(SOURCES)
+	# Compila TUTTI i sorgenti in un unico passaggio
+	$(CC) $(CFLAGS) -o $(TARGET) $(SOURCES)
 
-# Regola principale
-$(TARGET): $(OBJS)
-	$(CC) $(CFLAGS) -o $@ $^
-
-# Regola per compilare i file .c in .o
-%.o: %.c
-	$(CC) $(CFLAGS) -c $< -o $@
-
-# Pulizia dei file oggetto e dell'eseguibile
+# Regola per pulire la cartella
 clean:
-	rm -f $(OBJS) $(TARGET)
-
-.PHONY: clean
+	# Rimuove l'eseguibile e eventuali file oggetto residui
+	rm -f $(TARGET) *.o
