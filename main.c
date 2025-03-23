@@ -5,10 +5,13 @@
 #include "libreriabella.h"
 
 int main(){
-    int n=10;
-    int a[10];
+    int n=5;
+    int a[n];
     allocaarray(a,n);
-    insertionSort(a,n);
+    //insertionSort(a,n);
+    printarray(a,n);
+    //allocaarray(a,n);
+    mergeSort(a,n,0,n-1);
     printarray(a,n);
     return 0;
 }
