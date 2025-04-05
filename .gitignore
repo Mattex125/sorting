@@ -4,10 +4,4 @@
 *.sln
 *.vcxproj.*
 *.user
-
-# Ignore files without extensions (except allowed ones)
-*
-!*/
-!*.*
-!README
-!Makefile
+*.out

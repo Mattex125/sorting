@@ -1,4 +1,4 @@
-#include <libreriabella.h>
+#include "libreriabella.h"
 
 int partition(int v[], int l, int r);//gets me the pivot position
 
@@ -19,11 +19,12 @@ int partition(int v[],int l,int r){
     v[pivot_index]=v[r];
     v[r]=tmp;
 
-    //now we start finaly partition
+    //now we start finaly partition, pivot is last
+
     int lastmin=l-1;// posizione del ultimo minore è prima del inizio
     for (int j = l; j <= r - 1; j++) {
         // Se l'elemento corrente è minore o uguale al pivot
-        if (v[j] <= v[pivot_index]) {
+        if (v[j] <= v[r]) {
             lastmin++; // Incrementa i per fare spazio all'elemento minore o uguale al pivot
     //swap primo non minore per l'ele attuale (minore)
             tmp = v[lastmin];
