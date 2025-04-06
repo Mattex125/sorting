@@ -12,7 +12,8 @@ int main(){
     printarray(a,n);
     //allocaarray(a,n);
     //mergeSort(a,n,0,n-1);
-    quickSort(a,n,0,n-1);
+    //quickSort(a,n,0,n-1);
+    countingSort(a,n,10);
     printarray(a,n);
     return 0;
 }
